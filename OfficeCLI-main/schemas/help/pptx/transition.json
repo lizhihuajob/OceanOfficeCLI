@@ -1,0 +1,16 @@
+{
+  "$schema": "../_schema.json",
+  "format": "pptx",
+  "element": "transition",
+  "parent": "slide",
+  "operations": {"set": true, "get": true},
+  "paths": {"positional": ["/slide[N]"]},
+  "note": "Slide-level transition properties. Set/Get target the slide node itself; no independent child path. Set examples: `set /slide[1] --prop transition=morph --prop advanceTime=3000`. Lookup: Set.Slide.cs:286/293/297; Get: Animations.cs:1346/1358/1408.",
+  "properties": {
+    "transition": { "type":"enum", "values":["morph","fade","push","wipe","split","cut","random","wheel","blinds","checker","comb","cover","dissolve","flash","fly","plus","strips","wedge","zoom"], "set":true, "get":true, "description":"transition type token", "readback":"transition type token", "examples":["--prop transition=morph"], "enforcement":"report" },
+    "advanceTime": { "type":"string", "set":true, "get":true, "description":"auto-advance after time (ms, or 'none' to clear)", "readback":"ms string", "examples":["--prop advanceTime=3000","--prop advanceTime=none"], "enforcement":"report" },
+    "advanceClick": { "type":"bool", "set":true, "get":true, "description":"advance on click (default true)", "readback":"true | false", "examples":["--prop advanceClick=true"], "enforcement":"report" },
+    "transitionDuration": { "type":"number", "set":false, "get":true, "description":"transition duration in milliseconds (CT_TransitionStartSoundAction @dur on PowerPoint 2010+ extLst transition).", "readback":"integer ms", "enforcement":"report" },
+    "transitionSpeed": { "type":"enum", "values":["fast","med","slow"], "set":false, "get":true, "description":"legacy transition speed token (CT_SlideTransition @spd) — fast/med/slow.", "readback":"speed token", "enforcement":"report" }
+  }
+}
